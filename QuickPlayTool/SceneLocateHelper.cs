@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace QuickPlayTool
@@ -11,6 +12,11 @@ namespace QuickPlayTool
         /// *.unity
         /// </summary>
         public static readonly string UnitySceneFilePattern = "*.unity";
+
+        /// <summary>
+        /// unity
+        /// </summary>
+        public static readonly string UnitySceneFileExtension = "unity";
 
         /// <summary>
         /// Returns all scene file paths under <see cref="Application.dataPath"/>
@@ -46,6 +52,18 @@ namespace QuickPlayTool
         public static string GetFileName(string path)
         {
             return path.Split('\\', '/').Last();
+        }
+
+        /// <summary>
+        /// Opens a file selection dialog that allows selection of scenes only.
+        /// </summary>
+        /// <returns></returns>
+        public static string OpenSceneDialog()
+        {
+            return EditorUtility.OpenFilePanelWithFilters(
+                "Select Scene",
+                Application.dataPath,
+                new[] {"Unit Scene File", UnitySceneFileExtension});
         }
     }
 }

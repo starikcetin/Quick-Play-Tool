@@ -1,4 +1,7 @@
-﻿using UnityEditor;
+﻿using System;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
 
 namespace QuickPlayTool
 {
@@ -32,6 +35,37 @@ namespace QuickPlayTool
         {
             get { return EditorPrefs.GetBool("QuickPlayTool.AutoCompact"); }
             set { EditorPrefs.SetBool("QuickPlayTool.AutoCompact", value); }
+        }
+
+        public static bool PresetsFoldout
+        {
+            get { return EditorPrefs.GetBool("QuickPlayTool.PresetsFoldout"); }
+            set { EditorPrefs.SetBool("QuickPlayTool.PresetsFoldout", value); }
+        }
+
+        public static void SetScenePresets(PresetsContainer presetContainer)
+        {
+            var json = JsonUtility.ToJson(presetContainer);
+            EditorPrefs.SetString("QuickPlayTool.Presets", json);
+        }
+
+        public static PresetsContainer GetScenePresets()
+        {
+            if (!EditorPrefs.HasKey("QuickPlayTool.Presets"))
+            {
+                return new PresetsContainer();
+            }
+            else
+            {
+                var json = EditorPrefs.GetString("QuickPlayTool.Presets");
+                var presets = JsonUtility.FromJson<PresetsContainer>(json);
+                return presets;
+            }
+        }
+
+        public static string GetRawPresetJson()
+        {
+            return JsonHelper.FormatJson(EditorPrefs.GetString("QuickPlayTool.Presets"));
         }
     }
 }

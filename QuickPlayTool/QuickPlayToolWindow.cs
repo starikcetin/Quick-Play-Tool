@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace QuickPlayTool
@@ -129,6 +130,98 @@ namespace QuickPlayTool
                         EditorGUILayout.EndHorizontal();
                 }
             }
+
+            //
+            // Presets Section
+            //
+            EditorGUILayout.Space();
+            EditorPrefsHelper.PresetsFoldout = EditorGUILayout.Foldout(EditorPrefsHelper.PresetsFoldout, "Presets", true);
+            if (EditorPrefsHelper.PresetsFoldout)
+            {
+                GUILayout.Label("-- Presets area begin --");
+
+                var presetsContainer = EditorPrefsHelper.GetScenePresets();
+
+                for (var iPreset = presetsContainer.Presets.Count - 1; iPreset >= 0; iPreset--)
+                {
+                    var preset = presetsContainer.Presets[iPreset];
+
+                    // begin a preset
+                    GUILayout.BeginVertical(EditorStyles.helpBox);
+
+                    // preset name
+                    var name = GUILayout.TextField(preset.Name);
+                    if (name != preset.Name)
+                    {
+                        preset.Name = name;
+                        EditorPrefsHelper.SetScenePresets(presetsContainer);
+                    }
+
+                    for (var iScene = preset.Scenes.Count - 1; iScene >= 0; iScene--)
+                    {
+                        var scene = preset.Scenes[iScene];
+
+                        // begin a scene
+                        GUILayout.BeginHorizontal();
+
+                        // scene name or path
+                        GUILayout.Label(scene);
+
+                        // remove this scene button
+                        EditorGUILayout.Space();
+                        if (GUILayout.Button("Remove Scene", EditorStyles.miniButton))
+                        {
+                            preset.Scenes.Remove(scene);
+                            EditorPrefsHelper.SetScenePresets(presetsContainer);
+                        }
+
+                        // end a scene
+                        GUILayout.EndHorizontal();
+                    }
+
+                    EditorGUILayout.Space();
+                    GUILayout.BeginHorizontal();
+
+                    // add a scene to preset button
+                    if (GUILayout.Button("Add Scene", EditorStyles.miniButton))
+                    {
+                        var selectedScene = SceneLocateHelper.OpenSceneDialog();
+
+                        if (!string.IsNullOrEmpty(selectedScene))
+                        {
+                            var relativePath = SceneLocateHelper.MakeRelativePath(selectedScene);
+                            preset.Scenes.Add(relativePath);
+                            EditorPrefsHelper.SetScenePresets(presetsContainer);
+                        }
+                    }
+
+                    // remove this preset button
+                    if (GUILayout.Button("Remove Preset", EditorStyles.miniButton))
+                    {
+                        presetsContainer.Presets.Remove(preset);
+                        EditorPrefsHelper.SetScenePresets(presetsContainer);
+                    }
+
+                    GUILayout.EndHorizontal();
+
+                    // end a preset
+                    GUILayout.EndVertical();
+                    EditorGUILayout.Space();
+                }
+
+                if (GUILayout.Button("Add Preset", EditorStyles.miniButton))
+                {
+                    presetsContainer.Presets.Add(new Preset());
+                    EditorPrefsHelper.SetScenePresets(presetsContainer);
+                }
+
+                GUILayout.Label("-- Presets area end --");
+
+                var json = EditorPrefsHelper.GetRawPresetJson();
+
+                GUILayout.Label(json);
+            }
+
 
             EditorGUILayout.EndVertical();
         }
