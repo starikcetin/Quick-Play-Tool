@@ -15,19 +15,13 @@ Features
 Screenshots
 ---
 
-Wide Layout
-
 ![Wide Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/master/screenshots/Wide.PNG)
-
-
-Normal Layout
 
 ![Normal Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/master/screenshots/Normal.PNG)
 
-
-Narrow Layout
-
 ![Narrow Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/master/screenshots/Narrow.PNG)
+
+![Already In Play Mode Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/master/screenshots/AlreadyInPlayMode.PNG)
 
 ----
 
