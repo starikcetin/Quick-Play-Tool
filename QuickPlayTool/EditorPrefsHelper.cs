@@ -24,8 +24,8 @@ namespace QuickPlayTool
 
         public static string QuickPlaySceneRelativePath
         {
-            get { return EditorPrefs.GetString("QuickPlayTool.QuickPlayScene"); }
-            set { EditorPrefs.SetString("QuickPlayTool.QuickPlayScene", value); }
+            get { return EditorPrefs.GetString("QuickPlayTool.QuickPlaySceneRelativePath"); }
+            set { EditorPrefs.SetString("QuickPlayTool.QuickPlaySceneRelativePath", value); }
         }
 
         public static bool AutoCompact
