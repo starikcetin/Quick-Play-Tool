@@ -3,6 +3,13 @@ Quick Play Tool for Unity3D Game Engine
 
 An editor window for Unity3D game engine that lets you quickly list and play *all* scenes, as well as setting up a seperated "quick play scene".
 
+Unity Forum Thread: https://forum.unity.com/threads/open-source-quick-play-tool.526158/
+
+Install
+---
+Put the QuickPlayTool folder anywhere in under Assets folder.
+You can also submodule this repository if you are using git.
+
 Features
 ---
 
