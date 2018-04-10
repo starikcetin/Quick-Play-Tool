@@ -6,10 +6,8 @@ An editor window for Unity3D game engine that lets you quickly list and play *al
 Features
 ---
 
-- Scans the entire Assets folder and subfolders for scene files. Then lists these scenes with a play button for each.
-- You can set any of these scenes as the "quick play scene".
-- You can play any scene even if the editor is currently in play mode.
-- Prompts for confirmation before switching scenes or restarting play mode.
+- Scans the entire Assets folder and subfolders for scene files. Then lists these scenes with a play button for each. You can set any of these scenes as the "quick play scene". You can play any scene even if the editor is currently in play mode.
+- Prompts for save before switching scenes and confirmation before restarting play mode.
 - Provides an option to automatically adjust its layout depending on the width, so all content remains visible and interactable no matter how narrow the window is.
 
 Screenshots
