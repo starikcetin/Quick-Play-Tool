@@ -1,7 +1,5 @@
-﻿using System.ComponentModel;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace QuickPlayTool
 {
