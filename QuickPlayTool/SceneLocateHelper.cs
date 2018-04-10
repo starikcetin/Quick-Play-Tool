@@ -1,11 +1,4 @@
-﻿/*
-Copyright (c) 2018 S. Tarık Çetin
-
-This project is licensed under the terms of the MIT license.
-Refer to the LICENCE file in the root folder of the project.
-*/
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;

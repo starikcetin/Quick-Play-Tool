@@ -1,11 +1,4 @@
-﻿/*
-Copyright (c) 2018 S. Tarık Çetin
-
-This project is licensed under the terms of the MIT license.
-Refer to the LICENCE file in the root folder of the project.
-*/
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
