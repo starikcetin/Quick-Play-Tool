@@ -54,5 +54,13 @@ namespace QuickPlayTool
                 }
             }
         }
+
+        /// <summary>
+        /// Loads the scene at <paramref name="scenePath"/> as additive.
+        /// </summary>
+        public static void LoadAdditive(string scenePath)
+        {
+            EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Additive);
+        }
     }
 }

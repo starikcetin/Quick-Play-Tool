@@ -6,10 +6,12 @@ namespace QuickPlayTool
     public static class ScenePlayHelper
     {
         private static string _sceneToPlay;
+        private static bool _additive;
 
-        public static void PlayScene(string scenePath)
+        public static void PlayScene(string scenePath, bool additive)
         {
             _sceneToPlay = scenePath;
+            _additive = additive;
 
             if (!EditorApplication.isPlaying)
             {
@@ -68,7 +70,15 @@ namespace QuickPlayTool
             var didSave = EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
             if (!didSave) return;
 
-            EditorSceneManager.OpenScene(scenePath);
+            if (_additive)
+            {
+                EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Additive);
+            }
+            else
+            {
+                EditorSceneManager.OpenScene(scenePath);
+            }
+
             EditorApplication.isPlaying = true;
         }
     }

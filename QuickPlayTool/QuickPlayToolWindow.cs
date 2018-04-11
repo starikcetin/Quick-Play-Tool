@@ -70,7 +70,7 @@ namespace QuickPlayTool
             //
             // Quick Play Section
             //
-            if (Compact(300))
+            if (Compact(400))
             {
                 GUILayout.Label(
                     SceneLocateHelper.GetNameOrPath(EditorPrefsHelper.QuickPlaySceneRelativePath, EditorPrefsHelper.ShowPaths),
@@ -82,13 +82,17 @@ namespace QuickPlayTool
                 GUILayout.Label(
                     SceneLocateHelper.GetNameOrPath(EditorPrefsHelper.QuickPlaySceneRelativePath, EditorPrefsHelper.ShowPaths),
                     EditorStyles.helpBox,
-                    GUILayout.Width(position.width - 150));
+                    GUILayout.Width(position.width - 250));
             }
 
-            if (Compact(300)) EditorGUILayout.BeginHorizontal();
-            if (GUILayout.Button("Quick Play"))
+            if (Compact(400)) EditorGUILayout.BeginHorizontal();
+            if (GUILayout.Button(Compact(200) ? "Play" : "Quick Play"))
             {
-                ScenePlayHelper.PlayScene(EditorPrefsHelper.QuickPlaySceneRelativePath);
+                ScenePlayHelper.PlayScene(EditorPrefsHelper.QuickPlaySceneRelativePath, additive: false);
+            }
+            if (GUILayout.Button(Compact(200) ? "Pl Add" : "Quick Play Additive"))
+            {
+                ScenePlayHelper.PlayScene(EditorPrefsHelper.QuickPlaySceneRelativePath, additive: true);
             }
             EditorGUILayout.EndHorizontal();
 
@@ -101,7 +105,7 @@ namespace QuickPlayTool
             {
                 foreach (var relativeScenePath in SceneLocateHelper.GetAllScenePaths(true))
                 {
-                    if (Compact(300))
+                    if (Compact(400))
                     {
                         EditorGUILayout.BeginVertical();
                         GUILayout.Label(
@@ -115,20 +119,25 @@ namespace QuickPlayTool
                         GUILayout.Label(
                             SceneLocateHelper.GetNameOrPath(relativeScenePath, EditorPrefsHelper.ShowPaths),
                             EditorStyles.helpBox,
-                            GUILayout.Width(position.width - 150));
+                            GUILayout.Width(position.width - 250));
                     }
 
-                    if (GUILayout.Button("Play", EditorStyles.miniButton))
+                    if (GUILayout.Button("Play", EditorStyles.miniButtonLeft))
                     {
-                        ScenePlayHelper.PlayScene(relativeScenePath);
+                        ScenePlayHelper.PlayScene(relativeScenePath, additive: false);
                     }
 
-                    if (GUILayout.Button(Compact(160) ? "Set" : "Set As Quick Play", EditorStyles.miniButton))
+                    if (GUILayout.Button(Compact(200) ? "PAd" : "Play Additive", EditorStyles.miniButtonMid))
+                    {
+                        ScenePlayHelper.PlayScene(relativeScenePath, additive: true);
+                    }
+
+                    if (GUILayout.Button(Compact(200) ? "Set" : "Set As Quick", EditorStyles.miniButtonRight))
                     {
                         EditorPrefsHelper.QuickPlaySceneRelativePath = relativeScenePath;
                     }
 
-                    if (Compact(300))
+                    if (Compact(400))
                     {
                         EditorGUILayout.EndHorizontal();
                         EditorGUILayout.EndVertical();
@@ -241,7 +250,7 @@ namespace QuickPlayTool
                         }
 
                         // scene name or path
-                        GUILayout.Label(SceneLocateHelper.GetNameOrPath(scene, EditorPrefsHelper.ShowPaths));
+                        GUILayout.Label(SceneLocateHelper.GetNameOrPath(scene, EditorPrefsHelper.ShowPaths), EditorStyles.wordWrappedMiniLabel);
 
                         // end a scene
                         GUILayout.EndHorizontal();
@@ -262,7 +271,7 @@ namespace QuickPlayTool
                 EditorGUILayout.EndHorizontal();
             }
 
-            
+
             EditorGUILayout.EndVertical();
         }
 
