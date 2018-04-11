@@ -33,6 +33,8 @@ Screenshots
 
 ![Already In Play Mode Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/master/screenshots/AlreadyInPlayMode.PNG)
 
+![Remove Preset Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/master/screenshots/RemovePreset.PNG)
+
 ----
 
 Copyright (c) 2018 S. Tarık Çetin
