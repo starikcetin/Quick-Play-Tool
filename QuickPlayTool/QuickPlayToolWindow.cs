@@ -32,6 +32,8 @@ namespace QuickPlayTool
         {
             EditorGUILayout.BeginVertical();
 
+            GUILayout.Label(this.position.width.ToString());
+
             //
             // Preferences Section
             //
@@ -39,22 +41,22 @@ namespace QuickPlayTool
 
             EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
             EditorPrefsHelper.ShowPaths = GUILayout.Toggle(EditorPrefsHelper.ShowPaths,
-                Compact(200) ? "Path" : "Show Paths",
+                Compact(145) ? "P" : "Show Paths",
                 EditorStyles.toolbarButton);
 
             EditorPrefsHelper.ShowAsUtility = GUILayout.Toggle(EditorPrefsHelper.ShowAsUtility,
-                Compact(200) ? "Util" : "Show as Utility",
+                Compact(215) ? "U" : "Show as Utility",
                 EditorStyles.toolbarButton);
 
             EditorPrefsHelper.CloseCurrentScenesOnPresetLoad = GUILayout.Toggle(
                 EditorPrefsHelper.CloseCurrentScenesOnPresetLoad,
-                Compact(200) ? "ClPrLd" : "Close Current Scenes on Preset Load",
+                Compact(340) ? "CoP" : "Close Scenes on Preset Load",
                 EditorStyles.toolbarButton);
 
             GUILayout.FlexibleSpace();
 
             EditorPrefsHelper.AutoCompact = GUILayout.Toggle(EditorPrefsHelper.AutoCompact,
-                Compact(200) ? "Cmp" : "Auto Compact",
+                Compact(400) ? "AC" : "Auto Compact",
                 EditorStyles.toolbarButton);
 
             //GUILayout.FlexibleSpace();
@@ -154,41 +156,11 @@ namespace QuickPlayTool
                     // begin a preset
                     GUILayout.BeginVertical(EditorStyles.helpBox);
 
-                    // preset name
-                    var name = GUILayout.TextField(preset.Name);
-                    if (name != preset.Name)
-                    {
-                        preset.Name = name;
-                        EditorPrefsHelper.SetScenePresets(presetsContainer);
-                    }
-
-                    for (var iScene = preset.Scenes.Count - 1; iScene >= 0; iScene--)
-                    {
-                        var scene = preset.Scenes[iScene];
-
-                        // begin a scene
-                        GUILayout.BeginHorizontal();
-
-                        // scene name or path
-                        GUILayout.Label(scene);
-
-                        // remove this scene button
-                        EditorGUILayout.Space();
-                        if (GUILayout.Button("Remove Scene", EditorStyles.miniButton))
-                        {
-                            preset.Scenes.Remove(scene);
-                            EditorPrefsHelper.SetScenePresets(presetsContainer);
-                        }
-
-                        // end a scene
-                        GUILayout.EndHorizontal();
-                    }
-
-                    EditorGUILayout.Space();
+                    // begin the preset's header
                     GUILayout.BeginHorizontal();
 
                     // add a scene to preset button
-                    if (GUILayout.Button("Add Scene", EditorStyles.miniButton))
+                    if (GUILayout.Button("+", EditorStyles.miniButton, GUILayout.Width(20)))
                     {
                         var selectedScene = SceneLocateHelper.OpenSceneDialog();
 
@@ -201,17 +173,53 @@ namespace QuickPlayTool
                     }
 
                     // remove this preset button
-                    if (GUILayout.Button("Remove Preset", EditorStyles.miniButton))
+                    if (GUILayout.Button("X", EditorStyles.miniButton, GUILayout.Width(20)))
                     {
                         presetsContainer.Presets.Remove(preset);
                         EditorPrefsHelper.SetScenePresets(presetsContainer);
                     }
 
+                    // preset name
+                    var name = GUILayout.TextField(preset.Name);
+                    if (name != preset.Name)
+                    {
+                        preset.Name = name;
+                        EditorPrefsHelper.SetScenePresets(presetsContainer);
+                    }
+
                     // load this preset button
-                    if (GUILayout.Button("Load Preset", EditorStyles.miniButton))
+                    if (GUILayout.Button("Load", EditorStyles.miniButton, GUILayout.Width(50)))
                     {
                         SceneLoadHelper.LoadPreset(preset, EditorPrefsHelper.CloseCurrentScenesOnPresetLoad);
                     }
+
+                    // end the preset's header
+                    GUILayout.EndHorizontal();
+
+                    for (var iScene = preset.Scenes.Count - 1; iScene >= 0; iScene--)
+                    {
+                        var scene = preset.Scenes[iScene];
+
+                        // begin a scene
+                        GUILayout.BeginHorizontal();
+
+                        // remove this scene button
+                        if (GUILayout.Button("-", EditorStyles.miniButton, GUILayout.Width(20)))
+                        {
+                            preset.Scenes.Remove(scene);
+                            EditorPrefsHelper.SetScenePresets(presetsContainer);
+                        }
+
+                        //EditorGUILayout.Space();
+
+                        // scene name or path
+                        GUILayout.Label(SceneLocateHelper.GetNameOrPath(scene, EditorPrefsHelper.ShowPaths));
+
+                        // end a scene
+                        GUILayout.EndHorizontal();
+                    }
+
+                    GUILayout.BeginHorizontal();
 
                     GUILayout.EndHorizontal();
 
