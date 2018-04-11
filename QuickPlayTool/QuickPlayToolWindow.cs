@@ -240,8 +240,6 @@ namespace QuickPlayTool
                             EditorPrefsHelper.SetScenePresets(presetsContainer);
                         }
 
-                        //EditorGUILayout.Space();
-
                         // scene name or path
                         GUILayout.Label(SceneLocateHelper.GetNameOrPath(scene, EditorPrefsHelper.ShowPaths));
 
@@ -257,9 +255,6 @@ namespace QuickPlayTool
                     GUILayout.EndVertical();
                     EditorGUILayout.Space();
                 }
-
-                //var json = EditorPrefsHelper.GetRawPresetJson();
-                //GUILayout.Label(json);
             }
             else
             {
@@ -267,7 +262,7 @@ namespace QuickPlayTool
                 EditorGUILayout.EndHorizontal();
             }
 
-
+            
             EditorGUILayout.EndVertical();
         }
 
