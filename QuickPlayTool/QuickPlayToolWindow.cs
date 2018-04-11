@@ -202,6 +202,12 @@ namespace QuickPlayTool
                         EditorPrefsHelper.SetScenePresets(presetsContainer);
                     }
 
+                    // load this preset button
+                    if (GUILayout.Button("Load Preset", EditorStyles.miniButton))
+                    {
+                        SceneLoadHelper.LoadPreset(preset, true);
+                    }
+
                     GUILayout.EndHorizontal();
 
                     // end a preset
