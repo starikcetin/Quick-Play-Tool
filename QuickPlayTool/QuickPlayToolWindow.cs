@@ -32,8 +32,6 @@ namespace QuickPlayTool
         {
             EditorGUILayout.BeginVertical();
 
-            GUILayout.Label(this.position.width.ToString());
-
             //
             // Preferences Section
             //
