@@ -222,8 +222,16 @@ namespace QuickPlayTool
                     // remove this preset button
                     if (GUILayout.Button(Compact(160) ? "R" : "Remove", EditorStyles.miniButtonMid))
                     {
-                        presetsContainer.Presets.Remove(preset);
-                        EditorPrefsHelper.SetScenePresets(presetsContainer);
+                        var confirmRemove = EditorUtility.DisplayDialog(
+                            "Remove preset",
+                            "You are about to remove a preset. Are you sure?\n\nSelected preset: " + preset.Name,
+                            "Yes, remove it", "No, keep it");
+
+                        if (confirmRemove)
+                        {
+                            presetsContainer.Presets.Remove(preset);
+                            EditorPrefsHelper.SetScenePresets(presetsContainer);
+                        }
                     }
 
                     // load this preset button
