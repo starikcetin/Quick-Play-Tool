@@ -25,15 +25,15 @@ Features
 Screenshots
 ---
 
-![Wide Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/master/screenshots/Wide.PNG)
+![Wide Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/repository_resources/screenshots/Wide.PNG)
 
-![Normal Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/master/screenshots/Normal.PNG)
+![Normal Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/repository_resources/screenshots/Normal.PNG)
 
-![Narrow Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/master/screenshots/Narrow.PNG)
+![Narrow Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/repository_resources/screenshots/Narrow.PNG)
 
-![Already In Play Mode Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/master/screenshots/AlreadyInPlayMode.PNG)
+![Already In Play Mode Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/repository_resources/screenshots/AlreadyInPlayMode.PNG)
 
-![Remove Preset Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/master/screenshots/RemovePreset.PNG)
+![Remove Preset Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/repository_resources/screenshots/RemovePreset.PNG)
 
 ----
 
