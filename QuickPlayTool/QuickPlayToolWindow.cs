@@ -142,12 +142,28 @@ namespace QuickPlayTool
             // Presets Section
             //
             EditorGUILayout.Space();
+
+            // begin presets foldout line
+            EditorGUILayout.BeginHorizontal();
+
             EditorPrefsHelper.PresetsFoldout = EditorGUILayout.Foldout(EditorPrefsHelper.PresetsFoldout, "Presets", true);
+
             if (EditorPrefsHelper.PresetsFoldout)
             {
-                GUILayout.Label("-- Presets area begin --");
-
                 var presetsContainer = EditorPrefsHelper.GetScenePresets();
+
+                // new preset button
+                if (GUILayout.Button(
+                    Compact(160) ? "+" : "Add Preset",
+                    EditorStyles.miniButtonRight,
+                    GUILayout.Width(Compact(160) ? 30 : 92)))
+                {
+                    presetsContainer.Presets.Add(new Preset());
+                    EditorPrefsHelper.SetScenePresets(presetsContainer);
+                }
+
+                // end presets foldout line (if foldout is open)
+                EditorGUILayout.EndHorizontal();
 
                 for (var iPreset = presetsContainer.Presets.Count - 1; iPreset >= 0; iPreset--)
                 {
@@ -156,11 +172,22 @@ namespace QuickPlayTool
                     // begin a preset
                     GUILayout.BeginVertical(EditorStyles.helpBox);
 
+                    if (Compact(300))
+                    {
+                        // preset name
+                        var name = GUILayout.TextField(preset.Name);
+                        if (name != preset.Name)
+                        {
+                            preset.Name = name;
+                            EditorPrefsHelper.SetScenePresets(presetsContainer);
+                        }
+                    }
+
                     // begin the preset's header
                     GUILayout.BeginHorizontal();
 
                     // add a scene to preset button
-                    if (GUILayout.Button("+", EditorStyles.miniButton, GUILayout.Width(20)))
+                    if (GUILayout.Button("+", EditorStyles.miniButtonLeft))
                     {
                         var selectedScene = SceneLocateHelper.OpenSceneDialog();
 
@@ -172,23 +199,26 @@ namespace QuickPlayTool
                         }
                     }
 
+                    if (!Compact(300))
+                    {
+                        // preset name
+                        var name = GUILayout.TextField(preset.Name, GUILayout.Width(position.width - 130));
+                        if (name != preset.Name)
+                        {
+                            preset.Name = name;
+                            EditorPrefsHelper.SetScenePresets(presetsContainer);
+                        }
+                    }
+
                     // remove this preset button
-                    if (GUILayout.Button("X", EditorStyles.miniButton, GUILayout.Width(20)))
+                    if (GUILayout.Button(Compact(160) ? "R" : "Remove", EditorStyles.miniButtonMid))
                     {
                         presetsContainer.Presets.Remove(preset);
                         EditorPrefsHelper.SetScenePresets(presetsContainer);
                     }
 
-                    // preset name
-                    var name = GUILayout.TextField(preset.Name);
-                    if (name != preset.Name)
-                    {
-                        preset.Name = name;
-                        EditorPrefsHelper.SetScenePresets(presetsContainer);
-                    }
-
                     // load this preset button
-                    if (GUILayout.Button("Load", EditorStyles.miniButton, GUILayout.Width(50)))
+                    if (GUILayout.Button(Compact(160) ? "L" : "Load", EditorStyles.miniButtonRight))
                     {
                         SceneLoadHelper.LoadPreset(preset, EditorPrefsHelper.CloseCurrentScenesOnPresetLoad);
                     }
@@ -228,17 +258,13 @@ namespace QuickPlayTool
                     EditorGUILayout.Space();
                 }
 
-                if (GUILayout.Button("Add Preset", EditorStyles.miniButton))
-                {
-                    presetsContainer.Presets.Add(new Preset());
-                    EditorPrefsHelper.SetScenePresets(presetsContainer);
-                }
-
-                GUILayout.Label("-- Presets area end --");
-
-                var json = EditorPrefsHelper.GetRawPresetJson();
-
-                GUILayout.Label(json);
+                //var json = EditorPrefsHelper.GetRawPresetJson();
+                //GUILayout.Label(json);
+            }
+            else
+            {
+                // end presets foldout line (if foldout is closed)
+                EditorGUILayout.EndHorizontal();
             }
 
 
