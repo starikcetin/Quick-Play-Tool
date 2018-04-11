@@ -43,11 +43,8 @@ namespace QuickPlayTool
                 {
                     var scene = EditorSceneManager.GetSceneAt(i);
 
-                    if (preset.Scenes.Contains(scene.path))
-                    {
-                        Debug.Log("Skipping close for: " + scene.path);
-                    }
-                    else
+                    // If the scene was in the preset, don't close it.
+                    if (!preset.Scenes.Contains(scene.path))
                     {
                         EditorSceneManager.CloseScene(scene, true);
                     }
