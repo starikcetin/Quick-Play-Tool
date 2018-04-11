@@ -49,6 +49,12 @@ namespace QuickPlayTool
             EditorPrefs.SetString("QuickPlayTool.Presets", json);
         }
 
+        public static bool CloseCurrentScenesOnPresetLoad
+        {
+            get { return EditorPrefs.GetBool("QuickPlayTool.CloseCurrentScenesOnPresetLoad"); }
+            set { EditorPrefs.SetBool("QuickPlayTool.CloseCurrentScenesOnPresetLoad", value); }
+        }
+
         public static PresetsContainer GetScenePresets()
         {
             if (!EditorPrefs.HasKey("QuickPlayTool.Presets"))

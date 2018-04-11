@@ -46,6 +46,11 @@ namespace QuickPlayTool
                 Compact(200) ? "Util" : "Show as Utility",
                 EditorStyles.toolbarButton);
 
+            EditorPrefsHelper.CloseCurrentScenesOnPresetLoad = GUILayout.Toggle(
+                EditorPrefsHelper.CloseCurrentScenesOnPresetLoad,
+                Compact(200) ? "ClPrLd" : "Close Current Scenes on Preset Load",
+                EditorStyles.toolbarButton);
+
             GUILayout.FlexibleSpace();
 
             EditorPrefsHelper.AutoCompact = GUILayout.Toggle(EditorPrefsHelper.AutoCompact,
@@ -205,7 +210,7 @@ namespace QuickPlayTool
                     // load this preset button
                     if (GUILayout.Button("Load Preset", EditorStyles.miniButton))
                     {
-                        SceneLoadHelper.LoadPreset(preset, true);
+                        SceneLoadHelper.LoadPreset(preset, EditorPrefsHelper.CloseCurrentScenesOnPresetLoad);
                     }
 
                     GUILayout.EndHorizontal();
