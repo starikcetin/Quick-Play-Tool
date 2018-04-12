@@ -1,4 +1,4 @@
-# Repository Resources Branch
+# Repository Resources Branch for Quick Play Tool
 
 This branch is for storing resources of the repository itself.
 
