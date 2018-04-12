@@ -4,6 +4,10 @@ namespace QuickPlayTool
 {
     public static class EditorPrefsHelper
     {
+
+        private static readonly string ProjectSettingsSaveFolderPath_Default = "Assets";
+        private static readonly string ProjectSettingsSaveFileName_Default = "Quick-Play-Tool_ProjectSettings.json";
+
         public static bool ShowPaths
         {
             get { return EditorPrefs.GetBool("QuickPlayTool.ShowPaths"); }
@@ -40,6 +44,45 @@ namespace QuickPlayTool
             set { EditorPrefs.SetBool("QuickPlayTool.CloseCurrentScenesOnPresetLoad", value); }
         }
 
+        public static string ProjectSettingsSaveFolderPath
+        {
+            get
+            {
+                var val = EditorPrefs.GetString("QuickPlayTool.ProjectSettingsSaveFolderPath");
+
+                if (string.IsNullOrEmpty(val))
+                {
+                    ProjectSettingsSaveFolderPath = ProjectSettingsSaveFolderPath_Default;
+                    return ProjectSettingsSaveFolderPath_Default;
+                }
+
+                return val;
+            }
+            set
+            {
+                EditorPrefs.SetString("QuickPlayTool.ProjectSettingsSaveFolderPath", value);
+            }
+        }
+
+        public static string ProjectSettingsSaveFileName
+        {
+            get
+            {
+                var val = EditorPrefs.GetString("QuickPlayTool.ProjectSettingsSaveFileName");
+
+                if (string.IsNullOrEmpty(val))
+                {
+                    ProjectSettingsSaveFileName = ProjectSettingsSaveFileName_Default;
+                    return ProjectSettingsSaveFileName_Default;
+                }
+
+                return val;
+            }
+            set
+            {
+                EditorPrefs.SetString("QuickPlayTool.ProjectSettingsSaveFileName", value);
+            }
+        }
         
     }
 }
