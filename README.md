@@ -41,7 +41,6 @@ Screenshots
 
 Licence
 ---
+MIT license. Refer to the [LICENCE](https://github.com/starikcetin/Quick-Play-Tool/blob/master/LICENSE) file.
 
 Copyright (c) 2018 S. Tarık Çetin
-
-This project is licensed under the terms of the MIT license. Refer to the [LICENCE](https://github.com/starikcetin/Quick-Play-Tool/blob/master/LICENSE) file.
