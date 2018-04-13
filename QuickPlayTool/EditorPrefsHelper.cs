@@ -5,8 +5,8 @@ namespace QuickPlayTool
     public static class EditorPrefsHelper
     {
 
-        private static readonly string ProjectSettingsSaveFolderPath_Default = "Assets";
-        private static readonly string ProjectSettingsSaveFileName_Default = "Quick-Play-Tool_ProjectSettings.json";
+        private static readonly string ProjectSettingsSaveFolderPath_Default = "Quick-Play-Tool Settings";
+        private static readonly string ProjectSettingsSaveFileName_Default = "Quick-Play-Tool Projectwise Settings.json";
 
         public static bool ShowPaths
         {
@@ -48,15 +48,14 @@ namespace QuickPlayTool
         {
             get
             {
-                var val = EditorPrefs.GetString("QuickPlayTool.ProjectSettingsSaveFolderPath");
-
-                if (string.IsNullOrEmpty(val))
+                if (EditorPrefs.HasKey("QuickPlayTool.ProjectSettingsSaveFolderPath"))
                 {
-                    ProjectSettingsSaveFolderPath = ProjectSettingsSaveFolderPath_Default;
-                    return ProjectSettingsSaveFolderPath_Default;
+                    var val = EditorPrefs.GetString("QuickPlayTool.ProjectSettingsSaveFolderPath");
+                    return val;
                 }
 
-                return val;
+                ProjectSettingsSaveFolderPath = ProjectSettingsSaveFolderPath_Default;
+                return ProjectSettingsSaveFolderPath_Default;
             }
             set
             {
@@ -68,15 +67,14 @@ namespace QuickPlayTool
         {
             get
             {
-                var val = EditorPrefs.GetString("QuickPlayTool.ProjectSettingsSaveFileName");
-
-                if (string.IsNullOrEmpty(val))
+                if (EditorPrefs.HasKey("QuickPlayTool.ProjectSettingsSaveFileName"))
                 {
-                    ProjectSettingsSaveFileName = ProjectSettingsSaveFileName_Default;
-                    return ProjectSettingsSaveFileName_Default;
+                    var val = EditorPrefs.GetString("QuickPlayTool.ProjectSettingsSaveFileName");
+                    return val;
                 }
 
-                return val;
+                ProjectSettingsSaveFileName = ProjectSettingsSaveFileName_Default;
+                return ProjectSettingsSaveFileName_Default;
             }
             set
             {
