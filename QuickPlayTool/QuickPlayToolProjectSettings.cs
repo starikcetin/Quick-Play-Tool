@@ -12,8 +12,15 @@ namespace QuickPlayTool
     {
         #region Save/Load and Access Infrastructure
 
-        [NonSerialized]
-        private static readonly string ProjectSettingsPathRelativeToAssets = "QuickPlayTool_ProjectSettings.json";
+        private static string SaveFullPath
+        {
+            get
+            {
+                return Path.Combine(
+                    EditorPrefsHelper.ProjectSettingsSaveFolderPath,
+                    EditorPrefsHelper.ProjectSettingsSaveFileName);
+            }
+        }
 
         [NonSerialized] private static QuickPlayToolProjectSettings _instance;
 
@@ -45,21 +52,25 @@ namespace QuickPlayTool
 
         private static bool _SettingsFileExist()
         {
-            var path = Path.Combine(Application.dataPath, ProjectSettingsPathRelativeToAssets);
+            var path = Path.Combine(Application.dataPath, SaveFullPath);
             return File.Exists(path);
         }
 
         private static QuickPlayToolProjectSettings _LoadFromSettingsFile()
         {
-            var path = Path.Combine(Application.dataPath, ProjectSettingsPathRelativeToAssets);
+            var path = Path.Combine(Application.dataPath, SaveFullPath);
             var json = File.ReadAllText(path);
             return JsonUtility.FromJson<QuickPlayToolProjectSettings>(json);
         }
 
         private static void _SaveToSettingsFile(QuickPlayToolProjectSettings instance)
         {
-            var path = Path.Combine(Application.dataPath, ProjectSettingsPathRelativeToAssets);
+            var path = Path.Combine(Application.dataPath, SaveFullPath);
             var json = JsonUtility.ToJson(instance);
+
+            // create missing directories if any
+            new FileInfo(path).Directory.Create();
+
             File.WriteAllText(path, json);
             AssetDatabase.Refresh();
         }
