@@ -71,14 +71,14 @@ namespace QuickPlayTool
             if (Compact(400))
             {
                 GUILayout.Label(
-                    SceneLocateHelper.GetNameOrPath(QuickPlayToolProjectSettings.Instance.QuickPlaySceneRelativePath, EditorPrefsHelper.ShowPaths),
+                    SceneLocateHelper.GetNameOrPath(ProjectwiseSettings.Instance.QuickPlaySceneRelativePath, EditorPrefsHelper.ShowPaths),
                     EditorStyles.helpBox);
             }
             else
             {
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Label(
-                    SceneLocateHelper.GetNameOrPath(QuickPlayToolProjectSettings.Instance.QuickPlaySceneRelativePath, EditorPrefsHelper.ShowPaths),
+                    SceneLocateHelper.GetNameOrPath(ProjectwiseSettings.Instance.QuickPlaySceneRelativePath, EditorPrefsHelper.ShowPaths),
                     EditorStyles.helpBox,
                     GUILayout.Width(position.width - 250));
             }
@@ -86,11 +86,11 @@ namespace QuickPlayTool
             if (Compact(400)) EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button(Compact(200) ? "Play" : "Quick Play"))
             {
-                ScenePlayHelper.PlayScene(QuickPlayToolProjectSettings.Instance.QuickPlaySceneRelativePath, additive: false);
+                ScenePlayHelper.PlayScene(ProjectwiseSettings.Instance.QuickPlaySceneRelativePath, additive: false);
             }
             if (GUILayout.Button(Compact(200) ? "Pl Add" : "Quick Play Additive"))
             {
-                ScenePlayHelper.PlayScene(QuickPlayToolProjectSettings.Instance.QuickPlaySceneRelativePath, additive: true);
+                ScenePlayHelper.PlayScene(ProjectwiseSettings.Instance.QuickPlaySceneRelativePath, additive: true);
             }
             EditorGUILayout.EndHorizontal();
 
@@ -132,7 +132,7 @@ namespace QuickPlayTool
 
                     if (GUILayout.Button(Compact(200) ? "Set" : "Set As Quick", EditorStyles.miniButtonRight))
                     {
-                        QuickPlayToolProjectSettings.Instance.QuickPlaySceneRelativePath = relativeScenePath;
+                        ProjectwiseSettings.Instance.QuickPlaySceneRelativePath = relativeScenePath;
                     }
 
                     if (Compact(400))
@@ -157,7 +157,7 @@ namespace QuickPlayTool
 
             if (EditorPrefsHelper.PresetsFoldout)
             {
-                var presetsContainer = QuickPlayToolProjectSettings.Instance.Presets;
+                var presetsContainer = ProjectwiseSettings.Instance.Presets;
 
                 // new preset button
                 if (GUILayout.Button(
@@ -166,7 +166,7 @@ namespace QuickPlayTool
                     GUILayout.Width(Compact(160) ? 30 : 92)))
                 {
                     presetsContainer.Presets.Add(new Preset());
-                    QuickPlayToolProjectSettings.Instance.Presets = presetsContainer;
+                    ProjectwiseSettings.Instance.Presets = presetsContainer;
                 }
 
                 // end presets foldout line (if foldout is open)
@@ -186,7 +186,7 @@ namespace QuickPlayTool
                         if (name != preset.Name)
                         {
                             preset.Name = name;
-                            QuickPlayToolProjectSettings.Instance.Presets = presetsContainer;
+                            ProjectwiseSettings.Instance.Presets = presetsContainer;
                         }
                     }
 
@@ -202,7 +202,7 @@ namespace QuickPlayTool
                         {
                             var relativePath = SceneLocateHelper.MakeRelativePath(selectedScene);
                             preset.Scenes.Add(relativePath);
-                            QuickPlayToolProjectSettings.Instance.Presets = presetsContainer;
+                            ProjectwiseSettings.Instance.Presets = presetsContainer;
                         }
                     }
 
@@ -213,7 +213,7 @@ namespace QuickPlayTool
                         if (name != preset.Name)
                         {
                             preset.Name = name;
-                            QuickPlayToolProjectSettings.Instance.Presets = presetsContainer;
+                            ProjectwiseSettings.Instance.Presets = presetsContainer;
                         }
                     }
 
@@ -228,7 +228,7 @@ namespace QuickPlayTool
                         if (confirmRemove)
                         {
                             presetsContainer.Presets.Remove(preset);
-                            QuickPlayToolProjectSettings.Instance.Presets = presetsContainer;
+                            ProjectwiseSettings.Instance.Presets = presetsContainer;
                         }
                     }
 
@@ -252,7 +252,7 @@ namespace QuickPlayTool
                         if (GUILayout.Button("-", EditorStyles.miniButton, GUILayout.Width(20)))
                         {
                             preset.Scenes.Remove(scene);
-                            QuickPlayToolProjectSettings.Instance.Presets = presetsContainer;
+                            ProjectwiseSettings.Instance.Presets = presetsContainer;
                         }
 
                         // scene name or path
@@ -288,12 +288,12 @@ namespace QuickPlayTool
 
         private void OnEnable()
         {
-            var ins = QuickPlayToolProjectSettings.Instance;
+            var ins = ProjectwiseSettings.Instance;
         }
 
         private void OnDestroy()
         {
-            QuickPlayToolProjectSettings.Save();
+            ProjectwiseSettings.Save();
         }
     }
 }

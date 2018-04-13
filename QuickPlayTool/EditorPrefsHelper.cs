@@ -44,41 +44,41 @@ namespace QuickPlayTool
             set { EditorPrefs.SetBool("QuickPlayTool.CloseCurrentScenesOnPresetLoad", value); }
         }
 
-        public static string ProjectSettingsSaveFolderPath
+        public static string ProjectwiseSettingsSaveFolderPath
         {
             get
             {
-                if (EditorPrefs.HasKey("QuickPlayTool.ProjectSettingsSaveFolderPath"))
+                if (EditorPrefs.HasKey("QuickPlayTool.ProjectwiseSettingsSaveFolderPath"))
                 {
-                    var val = EditorPrefs.GetString("QuickPlayTool.ProjectSettingsSaveFolderPath");
+                    var val = EditorPrefs.GetString("QuickPlayTool.ProjectwiseSettingsSaveFolderPath");
                     return val;
                 }
 
-                ProjectSettingsSaveFolderPath = ProjectSettingsSaveFolderPath_Default;
+                ProjectwiseSettingsSaveFolderPath = ProjectSettingsSaveFolderPath_Default;
                 return ProjectSettingsSaveFolderPath_Default;
             }
             set
             {
-                EditorPrefs.SetString("QuickPlayTool.ProjectSettingsSaveFolderPath", value);
+                EditorPrefs.SetString("QuickPlayTool.ProjectwiseSettingsSaveFolderPath", value);
             }
         }
 
-        public static string ProjectSettingsSaveFileName
+        public static string ProjectwiseSettingsSaveFileName
         {
             get
             {
-                if (EditorPrefs.HasKey("QuickPlayTool.ProjectSettingsSaveFileName"))
+                if (EditorPrefs.HasKey("QuickPlayTool.ProjectwiseSettingsSaveFileName"))
                 {
-                    var val = EditorPrefs.GetString("QuickPlayTool.ProjectSettingsSaveFileName");
+                    var val = EditorPrefs.GetString("QuickPlayTool.ProjectwiseSettingsSaveFileName");
                     return val;
                 }
 
-                ProjectSettingsSaveFileName = ProjectSettingsSaveFileName_Default;
+                ProjectwiseSettingsSaveFileName = ProjectSettingsSaveFileName_Default;
                 return ProjectSettingsSaveFileName_Default;
             }
             set
             {
-                EditorPrefs.SetString("QuickPlayTool.ProjectSettingsSaveFileName", value);
+                EditorPrefs.SetString("QuickPlayTool.ProjectwiseSettingsSaveFileName", value);
             }
         }
         

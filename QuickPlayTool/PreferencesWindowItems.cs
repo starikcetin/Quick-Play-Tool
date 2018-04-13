@@ -8,12 +8,12 @@ namespace QuickPlayTool
         [PreferenceItem("Quick Play Tool")]
         public static void DrawPreferences()
         {
-            var saveFolderPath = EditorPrefsHelper.ProjectSettingsSaveFolderPath;
-            var saveFileName = EditorPrefsHelper.ProjectSettingsSaveFileName;
+            var saveFolderPath = EditorPrefsHelper.ProjectwiseSettingsSaveFolderPath;
+            var saveFileName = EditorPrefsHelper.ProjectwiseSettingsSaveFileName;
 
             EditorGUILayout.BeginVertical();
 
-            GUILayout.Label("Project Preferences Save File (relative to Assets folder)");
+            GUILayout.Label("Projectwise Preferences Location (relative to Assets folder)");
 
             // folder
             EditorGUILayout.BeginHorizontal();
@@ -29,8 +29,8 @@ namespace QuickPlayTool
 
             EditorGUILayout.EndVertical();
 
-            EditorPrefsHelper.ProjectSettingsSaveFolderPath = saveFolderPath;
-            EditorPrefsHelper.ProjectSettingsSaveFileName = saveFileName;
+            EditorPrefsHelper.ProjectwiseSettingsSaveFolderPath = saveFolderPath;
+            EditorPrefsHelper.ProjectwiseSettingsSaveFileName = saveFileName;
         }
     }
 }

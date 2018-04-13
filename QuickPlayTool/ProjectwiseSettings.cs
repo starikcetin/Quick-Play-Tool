@@ -8,7 +8,7 @@ namespace QuickPlayTool
     /// <summary>
     /// Project based settings for Quick Play Tool.
     /// </summary>
-    public class QuickPlayToolProjectSettings
+    public class ProjectwiseSettings
     {
         #region Save/Load and Access Infrastructure
 
@@ -17,14 +17,14 @@ namespace QuickPlayTool
             get
             {
                 return Path.Combine(
-                    EditorPrefsHelper.ProjectSettingsSaveFolderPath,
-                    EditorPrefsHelper.ProjectSettingsSaveFileName);
+                    EditorPrefsHelper.ProjectwiseSettingsSaveFolderPath,
+                    EditorPrefsHelper.ProjectwiseSettingsSaveFileName);
             }
         }
 
-        [NonSerialized] private static QuickPlayToolProjectSettings _instance;
+        [NonSerialized] private static ProjectwiseSettings _instance;
 
-        public static QuickPlayToolProjectSettings Instance
+        public static ProjectwiseSettings Instance
         {
             get
             {
@@ -36,7 +36,7 @@ namespace QuickPlayTool
                     }
                     else
                     {
-                        _instance = new QuickPlayToolProjectSettings();
+                        _instance = new ProjectwiseSettings();
                         _SaveToSettingsFile(_instance);
                     }
                 }
@@ -56,14 +56,14 @@ namespace QuickPlayTool
             return File.Exists(path);
         }
 
-        private static QuickPlayToolProjectSettings _LoadFromSettingsFile()
+        private static ProjectwiseSettings _LoadFromSettingsFile()
         {
             var path = Path.Combine(Application.dataPath, SaveFullPath);
             var json = File.ReadAllText(path);
-            return JsonUtility.FromJson<QuickPlayToolProjectSettings>(json);
+            return JsonUtility.FromJson<ProjectwiseSettings>(json);
         }
 
-        private static void _SaveToSettingsFile(QuickPlayToolProjectSettings instance)
+        private static void _SaveToSettingsFile(ProjectwiseSettings instance)
         {
             var path = Path.Combine(Application.dataPath, SaveFullPath);
             var json = JsonUtility.ToJson(instance);
