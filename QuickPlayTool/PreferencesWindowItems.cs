@@ -13,7 +13,7 @@ namespace QuickPlayTool
 
             EditorGUILayout.BeginVertical();
 
-            GUILayout.Label("Project Preferences Save File");
+            GUILayout.Label("Project Preferences Save File (relative to Assets folder)");
 
             // folder
             EditorGUILayout.BeginHorizontal();
