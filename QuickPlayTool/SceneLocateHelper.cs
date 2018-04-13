@@ -51,6 +51,11 @@ namespace QuickPlayTool
         /// </summary>
         public static string GetFileName(string path)
         {
+            if (string.IsNullOrEmpty(path))
+            {
+                return string.Empty;
+            }
+
             return path.Split('\\', '/').Last();
         }
 

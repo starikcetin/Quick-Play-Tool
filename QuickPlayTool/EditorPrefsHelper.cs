@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEditor;
 
 namespace QuickPlayTool
 {
     public static class EditorPrefsHelper
     {
+
+        private static readonly string ProjectSettingsSaveFolderPath_Default = "Quick-Play-Tool Settings";
+        private static readonly string ProjectSettingsSaveFileName_Default = "Quick-Play-Tool Projectwise Settings.json";
+
         public static bool ShowPaths
         {
             get { return EditorPrefs.GetBool("QuickPlayTool.ShowPaths"); }
@@ -25,12 +26,6 @@ namespace QuickPlayTool
             set { EditorPrefs.SetBool("QuickPlayTool.AllScenesFoldout", value); }
         }
 
-        public static string QuickPlaySceneRelativePath
-        {
-            get { return EditorPrefs.GetString("QuickPlayTool.QuickPlaySceneRelativePath"); }
-            set { EditorPrefs.SetString("QuickPlayTool.QuickPlaySceneRelativePath", value); }
-        }
-
         public static bool AutoCompact
         {
             get { return EditorPrefs.GetBool("QuickPlayTool.AutoCompact"); }
@@ -43,35 +38,49 @@ namespace QuickPlayTool
             set { EditorPrefs.SetBool("QuickPlayTool.PresetsFoldout", value); }
         }
 
-        public static void SetScenePresets(PresetsContainer presetContainer)
-        {
-            var json = JsonUtility.ToJson(presetContainer);
-            EditorPrefs.SetString("QuickPlayTool.Presets", json);
-        }
-
         public static bool CloseCurrentScenesOnPresetLoad
         {
             get { return EditorPrefs.GetBool("QuickPlayTool.CloseCurrentScenesOnPresetLoad"); }
             set { EditorPrefs.SetBool("QuickPlayTool.CloseCurrentScenesOnPresetLoad", value); }
         }
 
-        public static PresetsContainer GetScenePresets()
+        public static string ProjectwiseSettingsSaveFolderPath
         {
-            if (!EditorPrefs.HasKey("QuickPlayTool.Presets"))
+            get
             {
-                return new PresetsContainer();
+                if (EditorPrefs.HasKey("QuickPlayTool.ProjectwiseSettingsSaveFolderPath"))
+                {
+                    var val = EditorPrefs.GetString("QuickPlayTool.ProjectwiseSettingsSaveFolderPath");
+                    return val;
+                }
+
+                ProjectwiseSettingsSaveFolderPath = ProjectSettingsSaveFolderPath_Default;
+                return ProjectSettingsSaveFolderPath_Default;
             }
-            else
+            set
             {
-                var json = EditorPrefs.GetString("QuickPlayTool.Presets");
-                var presets = JsonUtility.FromJson<PresetsContainer>(json);
-                return presets;
+                EditorPrefs.SetString("QuickPlayTool.ProjectwiseSettingsSaveFolderPath", value);
             }
         }
 
-        public static string GetRawPresetJson()
+        public static string ProjectwiseSettingsSaveFileName
         {
-            return JsonHelper.FormatJson(EditorPrefs.GetString("QuickPlayTool.Presets"));
+            get
+            {
+                if (EditorPrefs.HasKey("QuickPlayTool.ProjectwiseSettingsSaveFileName"))
+                {
+                    var val = EditorPrefs.GetString("QuickPlayTool.ProjectwiseSettingsSaveFileName");
+                    return val;
+                }
+
+                ProjectwiseSettingsSaveFileName = ProjectSettingsSaveFileName_Default;
+                return ProjectSettingsSaveFileName_Default;
+            }
+            set
+            {
+                EditorPrefs.SetString("QuickPlayTool.ProjectwiseSettingsSaveFileName", value);
+            }
         }
+        
     }
 }
