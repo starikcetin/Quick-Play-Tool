@@ -33,7 +33,7 @@ namespace QuickPlayTool
         /// </summary>
         public static string GetNameOrPath(string path, bool showPath)
         {
-            return showPath ? path : GetFileName(path);
+            return showPath ? path : Path.GetFileNameWithoutExtension(path);
         }
 
         /// <summary>
