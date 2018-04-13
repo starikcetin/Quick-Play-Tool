@@ -39,7 +39,8 @@ Screenshots
 
 ![Remove Preset Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/repository_resources/screenshots/RemovePreset.PNG)
 
-----
+Licence
+---
 
 Copyright (c) 2018 S. Tarık Çetin
 
