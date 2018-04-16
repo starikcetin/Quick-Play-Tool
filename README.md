@@ -1,6 +1,9 @@
 Quick Play Tool for Unity3D Game Engine
 ---
 
+![license](https://img.shields.io/github/license/mashape/apistatus.svg)
+[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=forum%20thread)](https://forum.unity.com/threads/free-open-source-quick-play-tool-quickly-play-any-scene-from-anywhere.526158/)
+
 An editor window for Unity3D game engine that lets you quickly list and play *all* scenes, as well as setting up a seperated "quick play scene". You can also set up *presets* of scenes that can be loaded together additively.
 
 Developed and tested on 2017.3.1f1.
