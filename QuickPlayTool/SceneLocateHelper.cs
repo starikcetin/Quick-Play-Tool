@@ -68,7 +68,7 @@ namespace QuickPlayTool
             return EditorUtility.OpenFilePanelWithFilters(
                 "Select Scene",
                 Application.dataPath,
-                new[] {"Unit Scene File", UnitySceneFileExtension});
+                new[] {"Unity Scene File", UnitySceneFileExtension});
         }
     }
 }
