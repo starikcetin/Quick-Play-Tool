@@ -39,8 +39,8 @@ Screenshots
 
 ![Remove Preset Screenshot](https://raw.githubusercontent.com/starikcetin/Quick-Play-Tool/repository_resources/screenshots/RemovePreset.PNG)
 
-Licence
+License
 ---
-MIT license. Refer to the [LICENCE](https://github.com/starikcetin/Quick-Play-Tool/blob/master/LICENSE) file.
+MIT license. Refer to the [LICENSE](https://github.com/starikcetin/Quick-Play-Tool/blob/master/LICENSE) file.
 
 Copyright (c) 2018 S. Tarık Çetin
