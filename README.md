@@ -9,9 +9,10 @@ Unity Forum Thread: https://forum.unity.com/threads/open-source-quick-play-tool.
 
 Installation
 ---
-Put the QuickPlayTool folder anywhere in under _Assets_ folder (preferebly under an _Editor_ folder).
+Put the _Assets/Editor/QuickPlayTool_ folder in anywhere under _Assets_ folder (preferebly under an _Editor_ folder).
 
 You can also submodule this repository if you are using git.
+  Here is a comprehensive tutorial from prime31 about submodules, symlinks and Unity: http://prime31.github.io/A-Method-for-Working-with-Shared-Code-with-Unity-and-Git/
 
 Launch the window from "Window > Quick Play Tool"
 
