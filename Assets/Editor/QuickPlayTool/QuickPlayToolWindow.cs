@@ -7,6 +7,7 @@ namespace QuickPlayTool
     public class QuickPlayToolWindow : EditorWindow
     {
         private static bool _windowNeedsReset;
+        Vector2 m_ScrollViewPos;
 
         [MenuItem("Window/Quick Play Tool")]
         private static void Init()
@@ -101,6 +102,7 @@ namespace QuickPlayTool
             EditorPrefsHelper.AllScenesFoldout = EditorGUILayout.Foldout(EditorPrefsHelper.AllScenesFoldout, "All Scenes", true);
             if (EditorPrefsHelper.AllScenesFoldout)
             {
+                m_ScrollViewPos = EditorGUILayout.BeginScrollView(m_ScrollViewPos);
                 foreach (var relativeScenePath in SceneLocateHelper.GetAllScenePaths(true))
                 {
                     if (Compact(400))
@@ -143,6 +145,7 @@ namespace QuickPlayTool
                     else
                         EditorGUILayout.EndHorizontal();
                 }
+                EditorGUILayout.EndScrollView();
             }
 
             //
