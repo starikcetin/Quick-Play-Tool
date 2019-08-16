@@ -1,0 +1,7 @@
+{
+	"name": "com.starikcetin.quickplaytool",
+	"displayName": "Quick Play Tool",
+	"version": "1.0.0",
+	"description": "Unity3D editor tool to speed up scene switching and playtesting when you are working with multiple scenes.",
+	"dependencies": {}
+}
