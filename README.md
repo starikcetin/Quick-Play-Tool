@@ -12,7 +12,7 @@ Installation (with UPM and UpmGitExtension, recommended)
 
 Install this package: https://github.com/mob-sakai/UpmGitExtension
 
-Install Quick Play Tool using UpmGitExtension (refer to the deocumentation on UpmGitExtension's readme).
+Install Quick Play Tool using UpmGitExtension.
 
 
 Installation (with UPM, without UpmGitExtension)
