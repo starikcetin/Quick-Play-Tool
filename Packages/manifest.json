@@ -1,7 +1,25 @@
 {
   "dependencies": {
-    "com.unity.package-manager-ui": "1.9.11",
+    "com.unity.2d.sprite": "1.0.0",
+    "com.unity.2d.tilemap": "1.0.0",
+    "com.unity.collab-proxy": "1.2.16",
+    "com.unity.ext.nunit": "1.0.0",
+    "com.unity.ide.rider": "1.0.8",
+    "com.unity.ide.vscode": "1.0.7",
+    "com.unity.package-manager-ui": "2.2.0",
+    "com.unity.test-framework": "1.0.18",
+    "com.unity.timeline": "1.1.0",
+    "com.unity.modules.androidjni": "1.0.0",
+    "com.unity.modules.animation": "1.0.0",
+    "com.unity.modules.audio": "1.0.0",
+    "com.unity.modules.director": "1.0.0",
     "com.unity.modules.imgui": "1.0.0",
-    "com.unity.modules.jsonserialize": "1.0.0"
+    "com.unity.modules.jsonserialize": "1.0.0",
+    "com.unity.modules.particlesystem": "1.0.0",
+    "com.unity.modules.ui": "1.0.0",
+    "com.unity.modules.unitywebrequest": "1.0.0",
+    "com.unity.modules.video": "1.0.0",
+    "com.unity.modules.vr": "1.0.0",
+    "com.unity.modules.xr": "1.0.0"
   }
 }
