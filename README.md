@@ -7,8 +7,29 @@ Developed and tested on 2017.3.1f1.
 
 Unity Forum Thread: https://forum.unity.com/threads/open-source-quick-play-tool.526158/
 
-Installation
+Installation (with UPM and UpmGitExtension, recommended)
 ---
+
+Install this package: https://github.com/mob-sakai/UpmGitExtension
+
+Install Quick Play Tool using UpmGitExtension.
+
+
+Installation (with UPM, without UpmGitExtension)
+---
+
+Add this as a dependency in your `packages.json` file:
+
+```
+"com.starikcetin.quickplaytool": "https://github.com/starikcetin/Quick-Play-Tool.git#1.0.0-upm",
+```
+
+Replace `1.0.0-upm` with the tag of the version that you want to install, or update using the Package Manager window.
+
+
+Installation (without UPM)
+---
+
 Put the _Assets/Editor/QuickPlayTool_ folder in anywhere under _Assets_ folder (preferebly under an _Editor_ folder).
 
 You can also submodule this repository if you are using git.
