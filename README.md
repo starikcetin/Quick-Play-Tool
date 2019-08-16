@@ -30,7 +30,7 @@ Replace `1.0.0-upm` with the tag of the version that you want to install, or upd
 Installation (without UPM)
 ---
 
-Put the _Assets/Editor/QuickPlayTool_ folder in anywhere under _Assets_ folder (preferebly under an _Editor_ folder).
+Put the _Assets/QuickPlayTool_ folder in anywhere under _Assets_ folder.
 
 You can also submodule this repository if you are using git.
   Here is a comprehensive tutorial from prime31 about submodules, symlinks and Unity: http://prime31.github.io/A-Method-for-Working-with-Shared-Code-with-Unity-and-Git/
